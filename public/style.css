@@ -16,6 +16,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    overflow: hidden;
 }
 
 h1,
@@ -26,9 +27,19 @@ h2 {
 }
 
 p {
-    color: #ffffff;
+    font-size: 18px;
     margin-bottom: 20px;
-    text-align: center;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+p:hover {
+    background-color: #eaeaea;
 }
 
 form {
@@ -87,4 +98,9 @@ button[type="submit"]:hover {
     margin-bottom: 10px;
     color: #333333;
     text-align: center;
+}
+
+.scroll {
+    height: 300px;
+    overflow-y: scroll;
 }

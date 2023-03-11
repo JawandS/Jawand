@@ -17,7 +17,8 @@ app.engine('hbs', engine({
 }));
 
 // use static files (css)
-app.use(express.static(__dirname + 'public'))
+console.log(__dirname + '/public')
+app.use(express.static(__dirname + '/public'))
 
 // parse body of post req
 var bodyParser = require('body-parser')
