@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>OpenAI Playground</h1>
+    <p>Enter your prompt below and see what OpenAI has to say:</p>
+    <form id="prompt-form" action="/api/chatgpt" method="post">
+        <label for="prompt">Prompt:</label>
+        <input type="text" id="prompt" name="prompt">
+        <button type="submit">Submit</button>
+    </form>
+    <div class="response">
+        <h2>Your Prompt:</h2>
+        <div id="prompt-template">
+            <h2>{{prompt}}</h2>
+        </div>
+        <h2>OpenAI's Response:</h2>
+        <div id="response-template">
+            <h2>{{response}}</h2>
+        </div>
+    </div>
+    {{> about}}
+</div>
