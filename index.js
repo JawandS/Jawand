@@ -28,7 +28,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // setup openai
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.OPENAI_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
