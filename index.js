@@ -17,12 +17,10 @@ app.engine('hbs', engine({
 }));
 
 // use static files (css)
-console.log(__dirname + '/public')
 app.use(express.static(__dirname + '/public'))
 
 // parse body of post req
 var bodyParser = require('body-parser')
-var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // setup openai
@@ -32,9 +30,9 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-
-// request information
-var info = {};
+// cookies
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 // openai endpoint
 app.post('/api/chatgpt', urlencodedParser, async (req, res) => {
@@ -43,29 +41,28 @@ app.post('/api/chatgpt', urlencodedParser, async (req, res) => {
         temperature: 0.5,
         max_tokens: 75,
         top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
+        frequency_penalty: 0.1,
+        presence_penalty: 0.1,
     }
     standardQuery["prompt"] = req.body.prompt;
-    console.log(req.body.prompt)
 
     openai.createCompletion(standardQuery).then(response => { // success
-        const responseData = response.data;
-        const generatedText = responseData.choices[0].text;
-        info = {
-            prompt: standardQuery.prompt,
-            response: generatedText
-        };
+        res.cookie('prompt', standardQuery.prompt)
+        res.cookie('response', response.data.choices[0].text)
         res.redirect('/')
         // res.json(response.data)
     }).catch(err => { // handle error
-        res.status(500)
-        res.send("error!")
+        console.log(err.message)
+        res.send(err.message)
     });
 });
 
 // render main page
 app.get('/', [], (req, res) => {
+    var info = {
+        prompt: req.cookies.prompt !== 'undefined' ? req.cookies.prompt : "no query",
+        response: req.cookies.response !== 'undefined' ? req.cookies.response : "no response"
+    }
     res.render('main', info);
 });
 
