@@ -10,9 +10,8 @@ const { engine } = require('express-handlebars');
 app.set('view engine', 'hbs');
 //Sets handlebars configurations
 app.engine('hbs', engine({
-    layoutsDir: __dirname + '/views/layouts',
+    layoutsDir: __dirname + '/views/layouts/',
     extname: 'hbs',
-    defaultLayout: 'index', // use index as layout by default
     partialsDir: __dirname + '/views/partials/' // insert partials with {{> partialName}} in html
 }));
 
@@ -57,13 +56,19 @@ app.post('/api/chatgpt', urlencodedParser, async (req, res) => {
     });
 });
 
+// render namemate page
+app.get('/namemate', [], (req, res) => {
+    res.render('namemate', { layout: "nameLayout" })
+});
+
 // render main page
 app.get('/', [], (req, res) => {
     var info = {
         prompt: req.cookies.prompt !== 'undefined' ? req.cookies.prompt : "no query",
-        response: req.cookies.response !== 'undefined' ? req.cookies.response : "no response"
+        response: req.cookies.response !== 'undefined' ? req.cookies.response : "no response",
+        layout: "index"
     }
-    res.render('main', info);
+    res.render('home', info);
 });
 
 app.listen(port, () => console.log(`App listening to port ${port}`));
