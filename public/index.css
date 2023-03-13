@@ -1,0 +1,61 @@
+body {
+    background-color: #333333;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-top: 0;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 40px;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #999999;
+}
+
+.content {
+    margin-top: 50px;
+    text-align: justify;
+}
+
+.skills {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.skill {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 20px;
+    background-color: #999999;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+}

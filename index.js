@@ -48,7 +48,7 @@ app.post('/api/chatgpt', urlencodedParser, async (req, res) => {
     openai.createCompletion(standardQuery).then(response => { // success
         res.cookie('prompt', standardQuery.prompt)
         res.cookie('response', response.data.choices[0].text)
-        res.redirect('/')
+        res.redirect('/playground')
         // res.json(response.data)
     }).catch(err => { // handle error
         console.log(err.message)
@@ -61,14 +61,19 @@ app.get('/namemate', [], (req, res) => {
     res.render('namemate', { layout: "nameLayout" })
 });
 
-// render main page
-app.get('/', [], (req, res) => {
+// render playground page
+app.get('/playground', [], (req, res) => {
     var info = {
         prompt: req.cookies.prompt !== 'undefined' ? req.cookies.prompt : "no query",
         response: req.cookies.response !== 'undefined' ? req.cookies.response : "no response",
-        layout: "index"
+        layout: "gen"
     }
-    res.render('home', info);
+    res.render('gen', info);
+});
+
+// render home page
+app.get('/', [], (req, res) => {
+    res.render('home', { layout: "index" });
 });
 
 app.listen(port, () => console.log(`App listening to port ${port}`));
