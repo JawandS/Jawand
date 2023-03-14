@@ -36,7 +36,7 @@ app.use(cookieParser());
 // openai endpoint
 app.post('/api/chatgpt', urlencodedParser, async (req, res) => {
     var standardQuery = { // standard query
-        model: "davinci",
+        model: "gpt-3.5-turbo",
         temperature: 0.5,
         max_tokens: 75,
         top_p: 1,
