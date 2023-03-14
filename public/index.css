@@ -1,61 +1,100 @@
-body {
-    background-color: #333333;
-    color: #FFFFFF;
-    font-family: Arial, sans-serif;
+:root {
+    --primary-color: #1a237e;
+    /* Dark Blue */
+    --secondary-color: #ef5350;
+    /* Red */
+    --background-color: #f5f5f513;
+    /* Light Grey */
+    --text-color: #212121;
+    /* Black */
+    --accent-color: #bead0d;
+    /* Yellow */
+}
+
+/* Global styles */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
-h1 {
-    font-size: 40px;
-    margin-top: 0;
-    text-align: center;
+a {
+    color: var(--primary-color);
 }
 
 ul {
     list-style: none;
-    padding: 0;
+}
+
+/* Header styles */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1em;
+}
+
+header h1 {
     margin: 0;
+    font-size: 2em;
+}
+
+/* Main content styles */
+main {
+    padding: 1em;
+}
+
+section,
+article {
+    margin-bottom: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: var(--primary-color);
 }
 
 li {
-    display: inline-block;
-    margin: 0 10px;
-    font-size: 40px;
+    margin-bottom: 0.5em;
 }
 
-a {
-    color: #FFFFFF;
-    text-decoration: none;
-    transition: all 0.3s ease;
+li a:hover {
+    color: var(--secondary-color);
 }
 
-a:hover {
-    color: #999999;
-}
-
-.content {
-    margin-top: 50px;
-    text-align: justify;
-}
-
-.skills {
-    margin-top: 50px;
+/* Footer styles */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5em;
     text-align: center;
 }
 
-.skill {
-    display: inline-block;
-    margin: 0 10px;
-    font-size: 20px;
-    background-color: #999999;
-    color: #FFFFFF;
-    padding: 10px;
-    border-radius: 10px;
+/* Skill section styles */
+ul {
+    font-size: 1.2em;
+}
+
+/* Test scores section styles */
+ul li {
+    font-size: 1.2em;
+}
+
+ul li:before {
+    content: "- ";
+}
+
+/* Project section styles */
+ul li a {
+    color: var(--accent-color);
+}
+
+ul li a:hover {
+    text-decoration: underline;
 }
